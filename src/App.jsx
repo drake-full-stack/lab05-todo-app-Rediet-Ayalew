@@ -16,7 +16,7 @@ function App() {
     e.preventDefault();
 
     if (inputValue.trim()) {
-      new_task = {text:inputValue, completed: false}
+      const new_task = {text:inputValue, completed: false}
       setTasks([...tasks, new_task]);
     }
     setInputValue("");
@@ -61,7 +61,10 @@ function App() {
               checked={task.completed}
               onChange={() => handleToggle(index)}
               />
-            <span className="task-text">{task.text}</span>
+            <span 
+              className={task.completed ? "task-text completed" : "task-text"}
+            >
+              {task.text}</span>
             <button
               className="delete-button"
               onClick={() => handleDelete(index)}
